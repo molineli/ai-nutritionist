@@ -45,7 +45,7 @@ class QueueLogger:
 
 
 # =========================================================
-# 定义风味主题库 (扩充版)
+# 定义风味主题库 
 # =========================================================
 ALL_THEMES = [
     # --- 西式/异域 ---
@@ -101,7 +101,7 @@ with st.sidebar:
 
     st.divider()
 
-    # --- 风味选择逻辑 (新增) ---
+    # --- 风味选择逻辑  ---
     st.subheader("🎨 食谱风格定制")
     # 选项列表：第一个是随机，后面是具体风味
     style_options = ["🎲 帮我随机选 (Surprise Me!)"] + ALL_THEMES
@@ -157,7 +157,7 @@ if btn_generate:
         "creative_theme": daily_theme
     }
 
-    # 在界面上展示选定的主题，增加交互感
+    # 在界面上展示选定的主题
     if is_random:
         st.info(f"✨ 既然您选择了随机，AI 为您挑选了灵感主题：**{daily_theme}**")
     else:
@@ -200,7 +200,7 @@ if btn_generate:
             # 稍微休息一下，避免 CPU 占用过高
             time.sleep(0.1)
 
-        # 线程结束后，再检查一次队列，确保没有遗漏
+        # 线程结束后，检查队列，确保没有遗漏
         while not log_queue.empty():
             new_line = log_queue.get()
             full_logs += new_line + "\n"
